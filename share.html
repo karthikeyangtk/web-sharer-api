@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Navigator share</title>
+    <script>
+      async function shareFunc() {
+        if (navigator?.share) {
+          const shareData = {
+            title: document.title || "Site title",
+            text: "Site description",
+            url: location.href || "",
+          };
+          try {
+            await navigator.share(shareData);
+          } catch (error) {
+            alert(`Error  ${error}`);
+          }
+        } else {
+          alert("Your system doesn't support sharing");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h3>Share your site using Navigator.share</h3>
+    <div>
+      <button onclick="shareFunc()">Share</button>
+    </div>
+  </body>
+</html>
